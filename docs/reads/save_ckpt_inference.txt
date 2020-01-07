@@ -1,0 +1,11 @@
+# From tensorflow/models/research/
+cd /home/tyrone/tensorflow/models/research/
+INPUT_TYPE=image_tensor
+PIPELINE_CONFIG_PATH=/home/tyrone/1/models/faster_rcnn_inception_v2_coco_2018_01_28_chk_6/faster_rcnn_inception_v2_coco.config
+TRAINED_CKPT_PREFIX=/home/tyrone/1/models/faster_rcnn_inception_v2_coco_2018_01_28_chk_6/model.ckpt-472801
+EXPORT_DIR=/home/tyrone/1/models/faster_rcnn_inception_v2_coco_2018_01_28_chk_6/export/
+python object_detection/export_inference_graph.py \
+    --input_type=${INPUT_TYPE} \
+    --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
+    --trained_checkpoint_prefix=${TRAINED_CKPT_PREFIX} \
+    --output_directory=${EXPORT_DIR}

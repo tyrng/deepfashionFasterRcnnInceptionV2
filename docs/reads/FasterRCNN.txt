@@ -1,0 +1,87 @@
+screen -S name
+screen -rx name
+
+
+
+# Add NVIDIA package repositories
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+sudo apt-get update
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+sudo apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+sudo apt-get update
+
+# Install NVIDIA driver
+sudo apt-get install --no-install-recommends nvidia-driver-418
+# Reboot. Check that GPUs are visible using the command: nvidia-smi
+
+# Install development and runtime libraries (~4GB)
+sudo apt-get install --no-install-recommends \
+    cuda-10-0 \
+    libcudnn7=7.6.2.24-1+cuda10.0  \
+    libcudnn7-dev=7.6.2.24-1+cuda10.0
+
+# Install TensorRT. Requires that libcudnn7 is installed above.
+sudo apt-get install -y --no-install-recommends libnvinfer5=5.1.5-1+cuda10.0 \
+    libnvinfer-dev=5.1.5-1+cuda10.0
+
+sudo apt install python3-pip
+
+git clone https://github.com/tensorflow/models.git
+
+###### download model data ## quickserve ## move data & models dir to /home/user/1 
+
+pip3 install tensorflow-gpu
+pip3 install --user Cython
+pip3 install --user contextlib2
+pip3 install --user pillow
+pip3 install --user lxml
+pip3 install --user jupyter
+pip3 install --user matplotlib
+pip3 install absl-py
+
+git clone https://github.com/cocodataset/cocoapi.git
+cd cocoapi/PythonAPI
+
+#nano Makefile change python to python3
+
+make
+cp -r pycocotools /home/tyrone/tensorflow/models/research/
+
+# From tensorflow/models/research/
+cd /home/tyrone/tensorflow/models/research/
+protoc object_detection/protos/*.proto --python_out=.
+
+export PYTHONPATH=$PYTHONPATH:/home/tyrone/tensorflow/models/research:/home/tyrone/tensorflow/models/research/slim
+
+# set eval gap (3600 secs) optional
+cd /home/tyrone/tensorflow/models/research/object_detection
+nano model_lib.py
+# adding throttle_secs=k (k is the time interval you want your evaluation to repeat) to the EvalSpecs of object_detection/models/model_lib.py. your file should look like this:
+#eval_specs.append(
+#    tf.estimator.EvalSpec(
+#        name=eval_spec_name,
+#        input_fn=eval_input_fn,
+#        steps=None,
+#        exporters=exporter,
+#        throttle_secs=3600))
+
+# Train
+# From the tensorflow/models/research/ directory
+cd /home/tyrone/tensorflow/models/research/
+PIPELINE_CONFIG_PATH=/home/tyrone/1/models/faster_rcnn_inception_v2_coco_2018_01_28/faster_rcnn_inception_v2_coco.config
+MODEL_DIR=/home/tyrone/1/models/faster_rcnn_inception_v2_coco_2018_01_28
+NUM_TRAIN_STEPS=600000
+SAMPLE_1_OF_N_EVAL_EXAMPLES=50
+python3 object_detection/model_main.py \
+    --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
+    --model_dir=${MODEL_DIR} \
+    --num_train_steps=${NUM_TRAIN_STEPS} \
+    --sample_1_of_n_eval_examples=$SAMPLE_1_OF_N_EVAL_EXAMPLES \
+    --alsologtostderr
+    2>&1 | tee -a /home/tyrone/Desktop/fn.txt
+
+# Tensorboard
+MODEL_DIR=/home/tyrone/1/models/faster_rcnn_inception_v2_coco_2018_01_28
+ tensorboard --logdir=${MODEL_DIR} --port 6006 --host 127.0.0.1

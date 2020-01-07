@@ -1,0 +1,24 @@
+FINE
+
+echo "Formatting training images to train.record..."
+python3 deep_fashion_to_tfrecord2.py --dataset_path /mnt/local/run/media/ebd019d1-e129-40da-86eb-f59949f95c57/DeepFashion/Category\ and\ Attribute\ Prediction\ Benchmark --output_path /mnt/local/home/tyrone/Desktop/train2.record --label_map_path /mnt/local/home/tyrone/Desktop/deep-fashion-detection/deepfashion_label_map_fine.pbtxt --evaluation_status train --categories fine
+
+echo "Formatting validation images to val.record..."
+python3 deep_fashion_to_tfrecord2.py --dataset_path /mnt/local/run/media/ebd019d1-e129-40da-86eb-f59949f95c57/DeepFashion/Category\ and\ Attribute\ Prediction\ Benchmark --output_path /mnt/local/home/tyrone/Desktop/val2.record --label_map_path /mnt/local/home/tyrone/Desktop/deep-fashion-detection/deepfashion_label_map_fine.pbtxt --evaluation_status val --categories fine
+
+echo "Formatting test images to test.record..."
+python3 deep_fashion_to_tfrecord2.py --dataset_path /mnt/local/run/media/ebd019d1-e129-40da-86eb-f59949f95c57/DeepFashion/Category\ and\ Attribute\ Prediction\ Benchmark --output_path /mnt/local/home/tyrone/Desktop/test2.record --label_map_path /mnt/local/home/tyrone/Desktop/deep-fashion-detection/deepfashion_label_map_fine.pbtxt --evaluation_status test --categories fine
+
+
+
+
+BROAD
+
+echo "Formatting training images to train.record..."
+python3 deep_fashion_to_tfrecord2.py --dataset_path /mnt/local/run/media/ebd019d1-e129-40da-86eb-f59949f95c57/DeepFashion/Category\ and\ Attribute\ Prediction\ Benchmark --output_path /mnt/local/home/tyrone/Desktop/train2.record --label_map_path /mnt/local/home/tyrone/Desktop/deep-fashion-detection/deepfashion_label_map_broad.pbtxt --evaluation_status train --categories broad
+
+echo "Formatting validation images to val.record..."
+python3 deep_fashion_to_tfrecord2.py --dataset_path /mnt/local/run/media/ebd019d1-e129-40da-86eb-f59949f95c57/DeepFashion/Category\ and\ Attribute\ Prediction\ Benchmark --output_path /mnt/local/home/tyrone/Desktop/val2.record --label_map_path /mnt/local/home/tyrone/Desktop/deep-fashion-detection/deepfashion_label_map_broad.pbtxt --evaluation_status val --categories broad
+
+echo "Formatting test images to test.record..."
+python3 deep_fashion_to_tfrecord2.py --dataset_path /mnt/local/run/media/ebd019d1-e129-40da-86eb-f59949f95c57/DeepFashion/Category\ and\ Attribute\ Prediction\ Benchmark --output_path /mnt/local/home/tyrone/Desktop/test2.record --label_map_path /mnt/local/home/tyrone/Desktop/deep-fashion-detection/deepfashion_label_map_broad.pbtxt --evaluation_status test --categories broad
