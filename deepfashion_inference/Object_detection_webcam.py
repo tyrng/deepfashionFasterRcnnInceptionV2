@@ -41,6 +41,8 @@ parser.add_argument("--label_map_path", type=str,
                     help="Path to label map proto")
 parser.add_argument("--num_classes", type=int,
                     help="Number of classes the object detector can identify")
+parser.add_argument("--min_score", type=float,
+                    help="Minimum score the object detector will consider")
 
 args = parser.parse_args()
 
@@ -56,6 +58,8 @@ PATH_TO_LABELS = args.label_map_path
 
 # Number of classes the object detector can identify
 NUM_CLASSES = args.num_classes
+
+MIN_SCORE = args.min_score
 
 ## Load the label map.
 # Label maps map indices to category names, so that when our convolution
@@ -121,7 +125,7 @@ while(True):
         category_index,
         use_normalized_coordinates=True,
         line_thickness=8,
-        min_score_thresh=0.60)
+        min_score_thresh=MIN_SCORE)
 
     # All the results have been drawn on the frame, so it's time to display it.
     cv2.imshow('Object detector', frame)

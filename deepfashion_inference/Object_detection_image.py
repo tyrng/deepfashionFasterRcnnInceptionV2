@@ -41,6 +41,8 @@ parser.add_argument("--num_classes", type=int,
                     help="Number of classes the object detector can identify")
 parser.add_argument("--image_path", type=str,
                     help="Path to image")
+parser.add_argument("--min_score", type=float,
+                    help="Minimum score the object detector will consider")
 
 args = parser.parse_args()
 
@@ -59,6 +61,8 @@ PATH_TO_IMAGE = args.image_path
 
 # Number of classes the object detector can identify
 NUM_CLASSES = args.num_classes
+
+MIN_SCORE = args.min_score
 
 # Load the label map.
 # Label maps map indices to category names, so that when our convolution
@@ -118,7 +122,7 @@ vis_util.visualize_boxes_and_labels_on_image_array(
     category_index,
     use_normalized_coordinates=True,
     line_thickness=8,
-    min_score_thresh=0.60)
+    min_score_thresh=MIN_SCORE)
 
 # All the results have been drawn on image. Now display the image.
 cv2.imshow('Object detector', image)
