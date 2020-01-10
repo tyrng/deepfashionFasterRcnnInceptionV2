@@ -33,6 +33,12 @@ Requires Python 3. Tested on Python 3.7.6 in macOS 10.13.6 and 10.14.5.
 -requirements.txt
 ```
 
+## Preparing Environment Variables
+```bash
+export PYTHONPATH=$PYTHONPATH:<path to project directory>/tf/models/research:<path to project directory>/tf/models/research/slim
+```
+Remember to run this in every terminal session prior to doing anything else. Or you can put this in your .bashrc (.bash_profile for macOS) file for persistency.
+
 ## Dataset Preparation:
 
 ```bash
