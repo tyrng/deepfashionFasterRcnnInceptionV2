@@ -1,4 +1,5 @@
-tf/
+tf/cocoapi/
+tf/models/
 .vscode/
 .direnv/
 

@@ -1,23 +1,29 @@
 import io
 import os
 import random
+import sys
 
 import pandas as pd
 import tensorflow as tf
 from PIL import Image
-from object_detection.utils import dataset_util
+
+# PYTHONPATH
+sys.path.append("tf/models/research")
+sys.path.append("tf/models/research/slim")
+sys.path.append("tf/models/research/object_detection")
+
+from utils import dataset_util
+from utils import label_map_util
 
 flags = tf.app.flags
 flags.DEFINE_string('dataset_path', '', 'Path to DeepFashion project dataset with Anno, Eval and Img directories')
 flags.DEFINE_string('output_path', '', 'Path to output TFRecord')
 flags.DEFINE_string('categories', '', 'Define the level of categories; broad or fine')
 flags.DEFINE_string('evaluation_status', '', 'train, val or test')
+flags.DEFINE_string('label_map_path', '', 'Path to label map proto')
 FLAGS = flags.FLAGS
 
-LABEL_DICT = {1: "top", 2: "bottom", 3: "long"}
-
-
-def create_tf_example(example, path_root):
+def create_tf_example(example, path_root, LABEL_DICT):
     # import image
     f_image = Image.open(path_root + example["image_name"])
 
@@ -101,6 +107,8 @@ def main(_):
 
     dataset_path = FLAGS.dataset_path
 
+    label_d = label_map_util.get_label_map_dict(FLAGS.label_map_path)
+
     # Annotation file paths
     bbox_file = os.path.join(dataset_path, 'Anno/list_bbox.txt')
     cat_cloth_file = os.path.join(dataset_path, 'Anno/list_category_cloth.txt')
@@ -127,7 +135,7 @@ def main(_):
 
     none_counter = 0
     for irow, example in examples_df.iterrows():
-        tf_example = create_tf_example(example, path_root=os.path.join(dataset_path, 'Img/'))
+        tf_example = create_tf_example(example, path_root=os.path.join(dataset_path, 'Img/'), LABEL_DICT=label_d)
         if tf_example is not None:
             writer.write(tf_example.SerializeToString())
         else:

@@ -1,0 +1,1 @@
+The [models](https://github.com/tensorflow/models) directory is placed here. 
