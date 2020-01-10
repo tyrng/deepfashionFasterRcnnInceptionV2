@@ -2,12 +2,12 @@
 
 Requires Python 3. Tested on Python 3.7.6 in macOS 10.13.6 and 10.14.5, and on Python 3.5.2 in Ubuntu 16.04.6 LTS. Does not work on Python >= 3.8. 
 
-## Installation:
+## Installation
 1. Clone [Tensorflow Models Repository](https://github.com/tensorflow/models) and put inside tf/ folder (tf/models/)
 2. Follow the setup for [Object Detection API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md). Remember to specify tensorflow==1.14 or tensorflow-gpu==1.14, tensorflow 2.0 does not work for this API.
 3. pip install --requirement requirements.txt (for extra dependencies used in this repo)
 
-## Recommended Directory Structure:
+## Recommended Directory Structure
 
 ```
 +accuracy_confusionMatrix
@@ -39,7 +39,7 @@ export PYTHONPATH=$PYTHONPATH:<path to project directory>/tf/models/research:<pa
 ```
 Remember to run this in every terminal session prior to doing anything else. Or you can put this in your .bashrc (.bash_profile for macOS) file for persistency.
 
-## Dataset Preparation:
+## Dataset Preparation
 
 ```bash
 # From the project root directory
@@ -57,7 +57,7 @@ python generate_tfrecord/deep_fashion_to_tfrecord.py \
     --label_map_path ${LABEL_MAP_PATH}
 ```
 
-## Training and Evaluation:
+## Training and Evaluation
 
 1. Training and evaluation using the sample configs:
 ```bash
@@ -81,7 +81,7 @@ python object_detection/model_main.py \
 MODEL_DIR={path to model directory e.g. models/<model name>/}
 tensorboard --logdir=${MODEL_DIR}
 ```
-## Exporting a Trained Model:
+## Exporting a Trained Model
 
 ``` bash
 # From tensorflow/models/research/
@@ -99,7 +99,7 @@ python object_detection/export_inference_graph.py \
     --output_directory=${EXPORT_DIR}
 ```
 
-## Generating Top-N Accuracy and Confusion Matrix:
+## Generating Top-N Accuracy and Confusion Matrix
 ```bash
 # From the project root directory
 
@@ -125,7 +125,7 @@ python accuracy_confusionMatrix/accuracy_confusionMatrix.py \
     --confusion_topn ${CONFUSION_TOPN}
 ```
 
-## Inferencing on Webcam:
+## Inferencing on Webcam
 ```bash
 # From the project root directory
 
@@ -141,7 +141,7 @@ python inference/Object_detection_webcam.py \
     --min_score ${MIN_SCORE}
 ```
 
-## Inferencing on an Image:
+## Inferencing on an Image
 ```bash
 # From the project root directory
 
