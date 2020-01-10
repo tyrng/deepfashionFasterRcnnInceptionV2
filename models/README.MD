@@ -1,0 +1,1 @@
+Models downloaded from [Object Detection Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) are placed here, pipeline configs used in the paper are given here.
