@@ -130,7 +130,7 @@ python accuracy_confusionMatrix/accuracy_confusionMatrix.py \
 # From the project root directory
 
 CKPT_PATH={Path to frozen detection graph .pb file, Which contains the model that is used e.g. models/<model name>/inference_graph/frozen_inference_graph.pb}
-LABEL_MAP_PATH={Path to label map proto, e.g. /ata/deepfashion_label_map_fine.pbtxt.}
+LABEL_MAP_PATH={Path to label map proto, e.g. data/deepfashion_label_map_fine.pbtxt.}
 NUM_CLASSESS={Number of classes the labels have. e.g. 50 FOR DeepFashion}
 MIN_SCORE={Threshold FOR minimum score that is considered a True positive. e.g. 0.3}
 
