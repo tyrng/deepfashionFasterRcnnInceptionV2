@@ -1,6 +1,6 @@
 # DeepFashion Fashion Detection using Tensorflow Object Detection API
 
-Requires Python 3. Tested on Python 3.7.6 in macOS 10.13.6 and 10.14.5.
+Requires Python 3. Tested on Python 3.7.6 in macOS 10.13.6 and 10.14.5, and on Python 3.5.2 in Ubuntu 16.04.6 LTS.
 
 ## Installation:
 1. Clone [Tensorflow Models Repository](https://github.com/tensorflow/models) and put inside tf/ folder (tf/models/)
