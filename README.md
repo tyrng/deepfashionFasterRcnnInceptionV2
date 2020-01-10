@@ -1,4 +1,4 @@
-# deepfashionFasterRcnnInceptionV2
+# DeepFashion Fashion Detection using Tensorflow Object Detection API
 
 Requires Python 3. Tested on Python 3.7.6.
 
