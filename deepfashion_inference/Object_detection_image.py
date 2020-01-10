@@ -23,9 +23,9 @@ import tensorflow as tf
 import sys
 
 # PYTHONPATH
-sys.path.append("../tf/models/research")
-sys.path.append("../tf/models/research/slim")
-sys.path.append("../tf/models/research/object_detection")
+sys.path.append("tf/models/research")
+sys.path.append("tf/models/research/slim")
+sys.path.append("tf/models/research/object_detection")
 
 # Import utilites
 from utils import label_map_util
