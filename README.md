@@ -93,7 +93,7 @@ python object_detection/export_inference_graph.py \
     --output_directory=${EXPORT_DIR}
 ```
 
-## Generating Confusion Matrix and Top-N Accuracy:
+## Generating accuracy and confusion matrix:
 ```bash
 # From the project root directory
 
