@@ -14,7 +14,7 @@ arguments:\
 --output_path \<Path to output TFRecord e.g. /home/user/val.record\> \
 --categories \<broad or fine, broad for top, bottom or full only, fine for categories.\> \
 --evaluation_status \<train, val or test\> \
---label_map_path \<Path to label map proto, given as deepfashion_label_map_broad.pbtxt or deepfashion_label_map_broad.pbtxt in the same folder.\>
+--label_map_path \<Path to label map proto, given as deepfashion_label_map_broad.pbtxt or deepfashion_label_map_broad.pbtxt in the 'data' directory.\>
 
 Training and Evaluation:
 1. Refer [Tensorflow Object Detection API, Running Locally](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_locally.md#running-the-training-job).
