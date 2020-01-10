@@ -75,7 +75,7 @@ python object_detection/model_main.py \
 MODEL_DIR={path to model directory e.g. models/<model name>/}
 tensorboard --logdir=${MODEL_DIR}
 ```
-## Exporting a trained model:
+## Exporting a Trained Model:
 
 ``` bash
 # From tensorflow/models/research/
@@ -93,7 +93,7 @@ python object_detection/export_inference_graph.py \
     --output_directory=${EXPORT_DIR}
 ```
 
-## Generating accuracy and confusion matrix:
+## Generating Top-N Accuracy and Confusion Matrix:
 ```bash
 # From the project root directory
 
@@ -119,7 +119,7 @@ python accuracy_confusionMatrix/accuracy_confusionMatrix.py \
     --confusion_topn ${CONFUSION_TOPN}
 ```
 
-## Inferencing on webcam:
+## Inferencing on Webcam:
 ```bash
 # From the project root directory
 
@@ -135,7 +135,7 @@ python inference/Object_detection_webcam.py \
     --min_score ${MIN_SCORE}
 ```
 
-## Inferencing on an image:
+## Inferencing on an Image:
 ```bash
 # From the project root directory
 
