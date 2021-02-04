@@ -4,7 +4,7 @@ Requires Python 3. Tested on Python 3.7.6 in macOS 10.13.6 and 10.14.5, and on P
 
 ## Installation
 1. Clone [Tensorflow Models Repository](https://github.com/tensorflow/models) and put inside tf/ folder (tf/models/)
-2. Follow the setup for [Object Detection API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md). Remember to specify tensorflow==1.14 or tensorflow-gpu==1.14, tensorflow 2.0 does not work for this API.
+2. Follow the setup for [Object Detection API](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1.md). Remember to specify tensorflow==1.14 or tensorflow-gpu==1.14, tensorflow 2.0 does not work for this API.
 3. pip install --requirement requirements.txt (for extra dependencies used in this repo)
 
 ## Recommended Directory Structure
